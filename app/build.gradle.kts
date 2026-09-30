@@ -31,3 +31,10 @@ tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
     options.release = 17
 }
+
+dependencyCheck {
+    val nvdApiKey = System.getenv("NVD_API_KEY")
+    if (!nvdApiKey.isNullOrBlank()) {
+        nvd.apiKey = nvdApiKey
+    }
+}
