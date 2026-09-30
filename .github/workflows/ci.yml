@@ -25,7 +25,14 @@ jobs:
       - name: Build application
         run: ./gradlew build
       - name: Run OWASP Dependency-Check
-        run: ./gradlew dependencyCheckAnalyze
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          if [ -n "$NVD_API_KEY" ]; then
+            ./gradlew dependencyCheckAnalyze -Dnvd.apiKey="$NVD_API_KEY"
+          else
+            ./gradlew dependencyCheckAnalyze
+          fi
       - name: Upload dependency report
         uses: actions/upload-artifact@v4
         with:
