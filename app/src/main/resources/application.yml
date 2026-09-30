@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: secure-rest-api
+  datasource:
+    url: jdbc:sqlite:./data/secure-api.db
+    driver-class-name: org.sqlite.JDBC
+  sql:
+    init:
+      mode: always
+
+server:
+  error:
+    include-message: never
+    include-stacktrace: never
+  max-http-request-header-size: 8KB
+
+jwt:
+  secret: ${JWT_SECRET}
+  issuer: secure-rest-api
+  expiration-minutes: 30

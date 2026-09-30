@@ -1,5 +1,7 @@
 plugins {
-    application
+    id("org.springframework.boot") version "3.5.6"
+    id("io.spring.dependency-management") version "1.1.7"
+    java
 }
 
 repositories {
@@ -7,11 +9,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation(libs.junit.jupiter)
-
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    implementation(libs.guava)
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.security:spring-security-crypto")
+    implementation("org.xerial:sqlite-jdbc:3.50.3.0")
+    implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
+    implementation("org.owasp.html:owasp-java-html-sanitizer:20240325.1")
 }
 
 java {
@@ -20,10 +26,7 @@ java {
     }
 }
 
-application {
-    mainClass = "ru.itmo.cybersec.api.App"
-}
-
-tasks.named<Test>("test") {
-    useJUnitPlatform()
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
 }

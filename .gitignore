@@ -1,6 +1,8 @@
 **/*.pdf
 /.gradle/
 **/build/
+/data/
+.env
 
 # Ignore Gradle project-specific cache directory
 .gradle
