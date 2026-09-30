@@ -1,7 +1,7 @@
 **/*.pdf
 /.gradle/
 **/build/
-/data/
+secure-api.db
 .env
 
 # Ignore Gradle project-specific cache directory
