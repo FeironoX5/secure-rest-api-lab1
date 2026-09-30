@@ -1,0 +1,24 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+http:
+  method: POST
+  url: http://localhost:8080/auth/login
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username": "student",
+        "password": "correct-horse-battery-staple"
+      }
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        bru.setVar("accessToken", res.body.accessToken);
+settings:
+  encodeUrl: true

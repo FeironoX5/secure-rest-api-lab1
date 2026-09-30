@@ -1,0 +1,9 @@
+opencollection: 1.0.0
+info:
+  name: Secure REST API Laboratory
+  type: workspace
+collections:
+  - name: Secure REST API
+    path: ./collections/secure-rest-api
+specs:
+docs: ''
